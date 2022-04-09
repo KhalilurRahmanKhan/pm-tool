@@ -1,0 +1,176 @@
+body{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main{
+    display: flex   ;
+}
+.left{
+    width: 250px;
+    height: 100vh;
+    background-color: #16009E;
+    position: fixed;
+}
+.brand-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-top: 10px;
+   
+}
+.menu{
+    margin-bottom: 40px;
+}
+.menu p{
+    color: white;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: -2px;
+    padding-left: 40px;
+}
+
+.item{
+    font-size: 16px !important;
+    padding: 5px 0px;
+    text-align: left !important;
+    padding-left: 60px !important;
+
+
+
+}
+.item i{
+    margin-right: 10px;
+}
+.item:hover {
+    border-left: 5px solid white;
+    padding-left: 55px !important;
+    cursor: pointer;
+}
+
+.right{
+    width: calc(100vw - 200px);
+    margin-left: 200px;
+
+}
+.nav{
+    height: 50px;
+    margin: 10px;
+    margin-left: 80px;
+    border-bottom: 3px solid #e7dbdb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px!important;
+}
+
+.menu a{
+    text-decoration: none;
+}
+.nav p{
+    font-weight: bold;
+    color: #16009E;
+    margin-left: 20px;
+}
+.nav-items{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.search{
+    background-color: #F4F3FC;
+}
+.search input{
+    border: none;
+    outline: none;
+    background-color: #F4F3FC;
+    padding: 5px;
+
+}
+.notification{
+    color: #16009E;
+    font-size: 20px;
+}
+.search button{
+    background-color: #F4F3FC;
+    border: none;
+    color: #ddc1c1;
+}
+.role-form{
+    display: flex;
+    width: 85%;
+    margin: 30px auto;
+}
+
+.role-form-3{
+    display: flex;
+    width: 83%;
+   margin-left: 90px;
+}
+.input-div{
+    width: 50%;
+    font-weight: bold;
+}
+
+.input-div input{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #F4F3FC;
+    border-bottom: 4px solid #16009E;
+    border-radius: 5px;
+}
+
+.input-div select{
+    width: 90%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #F4F3FC;
+    border-bottom: 4px solid #16009E;
+    border-radius: 5px;
+}
+.input-div-full {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #F4F3FC;
+    border-bottom: 4px solid #16009E;
+    border-radius: 5px;
+}
+.button{
+    display: flex;
+    width: 86%;
+    justify-content: end;
+    margin-bottom: 50px;
+}
+.button input{
+    padding: 10px 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    border: none;
+
+}
+.colored-btn{
+    background-color: #16009E;
+    color: white;
+}

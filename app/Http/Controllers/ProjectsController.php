@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ProjectsController extends Controller
+{
+    function index(){
+        return view("projects.index");
+    }
+    function create(){
+        return view("projects.create");
+    }
+}
