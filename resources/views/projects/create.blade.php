@@ -2,7 +2,7 @@
 @section("content")
 <div class="role-form">
     <div class="" style="width:100%;">
-        <label for="">Role</label><br>
+        <label for="">Project Name</label><br>
         <input class="input-div-full" name="" id="" cols="30" rows="5"></input>
     </div>
    
@@ -10,11 +10,11 @@
 </div>
 <div class="role-form">
     <div class="input-div">
-        <label for="">Role</label><br>
+        <label for="">Code</label><br>
         <input type="text">
     </div>
     <div class="input-div">
-        <label for="">Remarks</label><br>
+        <label for="">Initiated for</label><br>
         <select name="" id="">
             <option value=""></option>
             <option value=""></option>
@@ -25,7 +25,7 @@
 </div>
 <div class="role-form">
     <div class="" style="width:100%;">
-        <label for="">Role</label><br>
+        <label for="">Project description</label><br>
         <textarea class="input-div-full" name="" id="" cols="30" rows="5"></textarea>
     </div>
    
@@ -33,15 +33,15 @@
 </div>
 <div class="role-form-3">
     <div class="input-div">
-        <label for="">Role</label><br>
+        <label for="">Start date</label><br>
         <input type="text">
     </div>
     <div class="input-div">
-        <label for="">Role</label><br>
+        <label for="">End date</label><br>
         <input type="text">
     </div>
     <div class="input-div">
-        <label for="">Remarks</label><br>
+        <label for="">Duration</label><br>
         <select name="" id="">
             <option value=""></option>
             <option value=""></option>
@@ -52,7 +52,7 @@
 </div>
 <div class="role-form">
 <div class="input-div">
-        <label for="">Remarks</label><br>
+        <label for="">Project owner</label><br>
         <select name="" id="">
             <option value=""></option>
             <option value=""></option>
@@ -60,14 +60,14 @@
         </select> 
    </div>
     <div class="input-div">
-        <label for="">Role</label><br>
+        <label for="">remarks</label><br>
         <input type="text">
     </div>  
 </div>
 
 <div class="role-form">
     <div class="" style="width:100%;">
-        <label for="">Role</label><br>
+        <label for="">Attachment</label><br>
         <input class="input-div-full" type="file" ></input>
     </div>
    

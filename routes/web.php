@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RoleController;
@@ -22,8 +22,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/projects',[ProjectsController::class, 'index']);
-Route::get('/projects/create',[ProjectsController::class, 'create']);
+Route::resource('/projects',ProjectController::class);
+
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
 Route::get('/tasks',[TaskController::class, 'index']);

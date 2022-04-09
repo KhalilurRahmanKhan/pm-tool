@@ -1,21 +1,12 @@
 @extends("layouts.app")
+@section('title')
+Projects
+@endsection
 @section("content")
 <main class="col-md-8 ms-sm-auto col-lg-10 m-auto">
    
 <div class="row mb-3">
-    <div class="col-md-10">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            Filter
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
-    </div>
-    </div>
-    <div class="col-md-2">
+    <div class="col-md-6">
     <a href="/projects/create"><button type="button" class="btn btn-secondary">Create new project</button></a>
 
     </div>

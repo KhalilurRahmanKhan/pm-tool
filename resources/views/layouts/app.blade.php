@@ -27,10 +27,12 @@
                 
             </div>
             <div class="menu">
-                <a href="{{url('role')}}"><p>Role</p></a>
-                <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create</p></a>
-
-               
+                <a href="{{url('projects')}}"><p>Projects</p></a>
+                <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>  
+            </div>
+            <div class="menu">
+                <a href="{{url('role')}}"><p>Roles</p></a>
+                <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>   
             </div>
             <div class="menu">
                 <p>Menu Board</p>

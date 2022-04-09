@@ -1,6 +1,6 @@
 @extends("layouts.app")
 @section("title")
-Create a role
+Roles
 @endsection
 @section("content")
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mx-auto">
