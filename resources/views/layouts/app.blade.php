@@ -35,6 +35,10 @@
                 <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>   
             </div>
             <div class="menu">
+                <a href="{{url('role')}}"><p>Users</p></a>
+                <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>   
+            </div>
+            <div class="menu">
                 <p>Menu Board</p>
                
                 <p class="item"><i class="fa-solid fa-table-columns"></i>My Tahpiohpsk</p>

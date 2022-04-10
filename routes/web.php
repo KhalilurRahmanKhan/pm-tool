@@ -18,14 +18,18 @@ use App\Http\Controllers\TeamsController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
+Route::get('/',[AuthController::class, 'login']);
+Route::get('/dashboard',function(){
+    return view("dashboard");
 });
 
 Route::resource('/projects',ProjectController::class);
 
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
+Route::post('/auth/store',[AuthController::class, 'store']);
+Route::post('/auth/check',[AuthController::class, 'check']);
+
 Route::get('/tasks',[TaskController::class, 'index']);
 Route::get('/tasks/create',[TaskController::class, 'create']);
 Route::get('/users',function(){
@@ -39,8 +43,5 @@ Route::post('/role/store',[RoleController::class, 'store']);
 Route::get('/role/edit/{role}',[RoleController::class, 'edit']);
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
 Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);
-
-
-Route::resource('/teams',TeamsController::class);
 
 

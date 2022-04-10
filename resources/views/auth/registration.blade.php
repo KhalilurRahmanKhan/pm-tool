@@ -19,28 +19,42 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form>
+  <form action="{{url('auth/store')}}" method="post">
+    @csrf
     <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+      <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+      <label for="floatingInput">username</label>
     </div>
+    @error('username')
+        <small class="text-danger">{{$message}}</small>
+    @enderror
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
       <label for="floatingPassword">Password</label>
     </div>
+    @error('password')
+      <small class="text-danger">{{$message}}</small>
+    @enderror
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Confirm Password" name="password_confirmation">
+      <label for="floatingPassword">Confirm Password</label>
     </div>
+    @error('password_confirmation')
+      <small class="text-danger">{{$message}}</small>
+    @enderror
 
-    <div class="mt-2">
+    <div class="">
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
     </div>
-    <p class="mt-5 mb-3 text-muted">If you are already registered, <a href="">login here</a>.</p>
+    @if(session()->has("msg")) 
+      {{session()->get("msg")}}
+    @endif
+
+    <p class="mt-5 mb-3 text-muted">If you are already registered, <a href="{{url('/')}}">login here</a>.</p>
   </form>
-</main>
+</main><br>
 
 
     

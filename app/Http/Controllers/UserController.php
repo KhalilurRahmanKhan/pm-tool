@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Team;
 
-class TeamsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class TeamsController extends Controller
      */
     public function index()
     {
-
-        return view("teams.index",[
-            'teams' => Team::all(),
-        ]);
+        //
     }
 
     /**
@@ -27,7 +23,7 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        return view('teams.create');
+        //
     }
 
     /**
