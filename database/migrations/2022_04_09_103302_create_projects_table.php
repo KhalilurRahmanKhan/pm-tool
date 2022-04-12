@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->String('name');
             $table->String('code');
-            $table->String('initiated_for');
+            $table->integer('initiated_for');
             $table->String('description');
-            $table->String('start_date');
-            $table->String('end_date');
-            $table->String('project_owner');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('duration');
+            $table->integer('project_owner');
             $table->String('remarks');
-            $table->String('attachment');
+            $table->String('attachment')->default('fgsd');
             $table->timestamps();
         });
     }

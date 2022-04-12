@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::get('/users',function(){
 Route::get('/role',[RoleController::class, 'index']);
 Route::get('/role/create',[RoleController::class, 'create']);
 Route::post('/role/store',[RoleController::class, 'store']);
+Route::get('/role/edit/{role}',[RoleController::class, 'edit']);
+Route::post('/role/update/{role}',[RoleController::class, 'update']);
+Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);
+
+Route::get('/user',[UserController::class, 'index']);
 Route::get('/role/edit/{role}',[RoleController::class, 'edit']);
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
 Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);

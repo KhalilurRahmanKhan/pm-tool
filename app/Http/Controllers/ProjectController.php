@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\project;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Image;
 
 class ProjectController extends Controller
 {
@@ -14,7 +16,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.index');
+
+        return view('projects.index',[
+            "projects" => project::all(),
+        ]);
     }
 
     /**
@@ -24,7 +29,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+
+        return view('projects.create',[
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -34,8 +42,47 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {        
+        $this->validate($request,[
+            'name' => 'required',
+            'code' => 'required',
+            'initiated_for' => 'required',
+            'description' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'duration' => 'required',
+            'project_owner' => 'required',
+            'remarks' => 'required',
+
+        ]);
+
+        $return_after_create = project::create([
+            'name' => $request->name,
+            'code' => $request->code,
+            'initiated_for' => $request->initiated_for,
+            'description' => $request->description,
+            'description' => $request->description,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'duration' => $request->duration,
+            'project_owner' => $request->project_owner,
+            'remarks' => $request->remarks,
+        ]);
+
+        if($request->hasFile('attachment')){
+            $uploaded_file = $request->file("attachment");
+            $uploaded_file_new_name = $return_after_create->id.".".$uploaded_file->extension();
+            
+            $uploaded_file_location = base_path("public/uploads/projects/".$uploaded_file_new_name);
+
+         
+            Image::make($uploaded_file)->save($uploaded_file_location);
+
+            $return_after_create->attachment = $uploaded_file_new_name;
+            $return_after_create->save();
+        }
+
+        return redirect('/projects');
     }
 
     /**

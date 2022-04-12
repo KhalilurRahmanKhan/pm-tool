@@ -15,28 +15,36 @@ Projects
 <table class="table table-success table-striped">
     <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Project Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">Initiated for</th>
       <th scope="col">Description</th>
-      <th scope="col">Start date</th>
-      <th scope="col">End date</th>
       <th scope="col">Duration</th>
-      <th scope="col">Status</th>
+      <th scope="col">Owner</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
+  @forelse($projects as $project)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
+      <td>{{$project->name}}</td>
+      <td>{{$project->code}}</td>
+      <td>{{$project->initiated_for}}</td>
+      <td>{{$project->description}}</td>
+      <td>{{$project->duration}}</td>
+      <td>{{$project->project_owner}}</td>
+      <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
+        <a href="{{url('projects')}}/{{$project->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+      </div>
+      </td>
+
+      @empty
+      <td colspan="20" class="text-center text-danger"> No data found</td>
     
     </tr>
+  @endforelse
     
   </tbody>
 </table>

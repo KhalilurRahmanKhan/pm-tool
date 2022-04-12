@@ -24,7 +24,7 @@ body{
    
 }
 .menu{
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 .menu p{
     color: white;
@@ -173,4 +173,42 @@ body{
 .colored-btn{
     background-color: #16009E;
     color: white;
+}
+#profile-menu{
+    width: 200px;
+    height: 220px;
+    background-color: #16009E;
+    position: fixed;
+    right: 10px;
+    top : 60px;
+    z-index: 10;
+    display: none;
+    text-align: center;
+}
+
+#profile-menu img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+#profile-menu p{
+     
+    color: white;
+    font-size: 17px;
+    padding: 0px;
+    margin: 0px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#profile-menu p:hover{
+     
+    background-color: #9183f7;
+
+
 }

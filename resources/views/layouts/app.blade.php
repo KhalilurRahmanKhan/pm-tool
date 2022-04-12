@@ -57,17 +57,31 @@
                     <div class="notification">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="profile">
+                    <div class="profile" id="profile">
                         <img src="https://picsum.photos/200" alt="">
-                        <i class="fa-solid fa-angle-down"></i>
+                        <!-- <i class="fa-solid fa-angle-down"></i> -->
                     </div>
                 </div>
             </div>
+            <div id="profile-menu">
+                <img src="https://picsum.photos/200"" alt="">
+                <p>Profile</p>
+                <p>Change password</p>
+                
+
+                <button class="btn btn-sm btn-primary" style="margin-top :15px;">Logout</button>
+            </div>
+
             @yield("content")
         </div>
 
-      
+       
 
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+
 </body>
 </html>

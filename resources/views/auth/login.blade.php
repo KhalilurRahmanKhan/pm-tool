@@ -24,7 +24,7 @@
     <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="" name="username">
+      <input type="text" class="form-control" id="floatingInput" placeholder="" name="username" autocomplete="off">
       <label for="floatingInput">Username</label>
     </div>
     @error('username')
@@ -42,7 +42,7 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">Log In</button>
   </form>
   @if(session()->has("msg")) 
-      {{session()->get("msg")}}
+  <small class="text-danger"> {{session()->get("msg")}}</small>
     @endif
 
   <p class="mt-5 mb-3 text-muted">If you are not registered, <a href="{{url('auth/registration')}}">register here</a>.</p>

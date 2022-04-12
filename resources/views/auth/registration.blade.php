@@ -49,7 +49,7 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
     </div>
     @if(session()->has("msg")) 
-      {{session()->get("msg")}}
+      <small class="text-danger"> {{session()->get("msg")}}</small>
     @endif
 
     <p class="mt-5 mb-3 text-muted">If you are already registered, <a href="{{url('/')}}">login here</a>.</p>
