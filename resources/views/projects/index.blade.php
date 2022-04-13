@@ -21,6 +21,7 @@ Projects
       <th scope="col">Description</th>
       <th scope="col">Duration</th>
       <th scope="col">Owner</th>
+      <th scope="col">Attachment</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -35,8 +36,22 @@ Projects
       <td>{{$project->project_owner}}</td>
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-secondary">Edit</button></a>
-        <a href="{{url('projects')}}/{{$project->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+        <a href="{{url('projects/attachment/view')}}/{{$project->attachment}}"><button type="button" class="btn btn-sm btn-primary">View</button></a>
+        <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}"><button type="button" class="btn btn-sm btn-info">Download</button></a>
+      </div>
+      </td>
+      <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary">Edit</button></a>
+        <form action="{{ url('projects')}}/{{$project->id }}" method="POST">
+            @csrf
+
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-sm btn-danger btn-block">Delete</button>
+        </form>
+
+
       </div>
       </td>
 

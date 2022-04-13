@@ -6,6 +6,8 @@ use App\Models\project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Image;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -69,18 +71,35 @@ class ProjectController extends Controller
             'remarks' => $request->remarks,
         ]);
 
+        // if($request->hasFile('attachment')){
+        //     $uploaded_file = $request->file("attachment");
+        //     $uploaded_file_new_name = $return_after_create->id.".".$uploaded_file->extension();
+            
+        //     $uploaded_file_location = base_path("public/uploads/projects/".$uploaded_file_new_name);
+
+         
+        //     Image::make($uploaded_file)->save($uploaded_file_location);
+
+        //     $return_after_create->attachment = $uploaded_file_new_name;
+        //     $return_after_create->save();
+        // }
+
+
         if($request->hasFile('attachment')){
             $uploaded_file = $request->file("attachment");
             $uploaded_file_new_name = $return_after_create->id.".".$uploaded_file->extension();
             
-            $uploaded_file_location = base_path("public/uploads/projects/".$uploaded_file_new_name);
+            // $uploaded_file_location = base_path("public/uploads/projects/".$uploaded_file_new_name);
 
          
-            Image::make($uploaded_file)->save($uploaded_file_location);
+            // $request->file("attachment")->store($uploaded_file_location);
+            $request->file("attachment")->move('uploads/projects',$uploaded_file_new_name);
 
             $return_after_create->attachment = $uploaded_file_new_name;
             $return_after_create->save();
         }
+
+
 
         return redirect('/projects');
     }
@@ -104,7 +123,10 @@ class ProjectController extends Controller
      */
     public function edit(project $project)
     {
-        //
+        return view('projects.edit',[
+            'project' => $project,
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -116,7 +138,59 @@ class ProjectController extends Controller
      */
     public function update(Request $request, project $project)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required',
+            'code' => 'required',
+            'initiated_for' => 'required',
+            'description' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'duration' => 'required',
+            'project_owner' => 'required',
+            'remarks' => 'required',
+
+        ]);
+
+
+
+        if($request->hasFile('attachment')){
+            $file = Project::find($project);
+            $path = public_path("uploads/projects/".$file[0]->attachment);
+            echo $path;
+    
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $project->delete();
+        }
+
+        $project->name = $request->name;
+        $project->code = $request->code;
+        $project->initiated_for = $request->initiated_for;
+        $project->description = $request->description;
+        $project->start_date = $request->start_date;
+        $project->end_date = $request->end_date;
+        $project->duration = $request->duration;
+        $project->project_owner = $request->project_owner;
+        $project->remarks = $request->remarks;
+   
+        $project->save();
+
+
+        if($request->hasFile('attachment')){
+           
+
+            $uploaded_file = $request->file("attachment");
+            $uploaded_file_new_name = $project->id.".".$uploaded_file->extension();
+            $request->file("attachment")->move('uploads/projects',$uploaded_file_new_name);
+
+            $project->attachment = $uploaded_file_new_name;
+            $project->save();
+        }
+
+
+
+        return redirect('/projects');
     }
 
     /**
@@ -127,6 +201,31 @@ class ProjectController extends Controller
      */
     public function destroy(project $project)
     {
-        //
+
+
+        $file = Project::find($project);
+        $path = public_path("uploads/projects/".$file[0]->attachment);
+        echo $path;
+
+        if(File::exists($path)){
+            File::delete($path);
+        }
+        $project->delete();
+
+        return back();
+       
+    }
+
+
+    public function download($file)
+    {
+        return response()->download(public_path("uploads/projects/".$file));
+    }
+
+    public function view($file)
+    {
+        return view("projects.view",[
+            "file" => $file,
+        ]);
     }
 }

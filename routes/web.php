@@ -25,6 +25,8 @@ Route::get('/dashboard',function(){
 });
 
 Route::resource('/projects',ProjectController::class);
+Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download']);
+Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view']);
 
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
@@ -46,8 +48,8 @@ Route::post('/role/update/{role}',[RoleController::class, 'update']);
 Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);
 
 Route::get('/user',[UserController::class, 'index']);
-Route::get('/role/edit/{role}',[RoleController::class, 'edit']);
-Route::post('/role/update/{role}',[RoleController::class, 'update']);
-Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);
+Route::get('/user/edit/{user}',[UserController::class, 'edit']);
+Route::post('/user/update/{role}',[UserController::class, 'update']);
+Route::get('/user/delete/{role}',[UserController::class, 'destroy']);
 
 
