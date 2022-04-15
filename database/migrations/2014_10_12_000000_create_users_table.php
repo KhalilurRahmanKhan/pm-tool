@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('password');
-            $table->string('role')->default("new");
+            $table->integer('role_id')->nullable();
+            $table->boolean('block')->default(false);
             $table->timestamps();
         });
     }

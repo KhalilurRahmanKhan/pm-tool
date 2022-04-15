@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 
 
 class UserController extends Controller
@@ -64,7 +65,7 @@ class UserController extends Controller
     {
         return view('user.edit',[
             'user' => $user,
-            'users' => User::all(),
+            'roles' => Role::all(),
         ]);
     }
 
@@ -75,9 +76,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate($request,[
+            'role' => 'required',
+
+        ]);
+
+        $user->role_id = $request->role;
+        $user->save();
+
+        return redirect('/user');
     }
 
     /**
@@ -86,7 +95,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function block(User $user)
+    {
+        $user->block  = !$user->block;
+
+        $user->save();
+
+        return back();
+    }
+    public function destroy(User $user)
     {
         //
     }

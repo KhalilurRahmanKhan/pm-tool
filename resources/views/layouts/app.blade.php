@@ -19,13 +19,7 @@
             <div class="brand-name">
                 <p>Machine Xtreme</p>
             </div>
-            <div class="menu">
-                <p>Menu Board</p>
-                
-                    <p class="item"><i class="fa-solid fa-table-columns"></i>Dashboard</p>
-                    <p class="item"><i class="fa-solid fa-table-columns"></i>My Task</p>
-                
-            </div>
+           
             <div class="menu">
                 <a href="{{url('projects')}}"><p>Projects</p></a>
                 <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>  
@@ -38,13 +32,7 @@
                 <a href="{{url('user')}}"><p>Users</p></a>
                 <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>   
             </div>
-            <div class="menu">
-                <p>Menu Board</p>
-               
-                <p class="item"><i class="fa-solid fa-table-columns"></i>My Tahpiohpsk</p>
-                <p class="item"><i class="fa-solid fa-table-columns"></i>My Task</p>
-             
-            </div>
+          
         </div>
         <div class="right">
             <div class="nav">
@@ -58,19 +46,21 @@
                         <i class="fa-solid fa-bell"></i>
                     </div>
                     <div class="profile" id="profile">
-                        <img src="https://picsum.photos/200" alt="">
-                        <!-- <i class="fa-solid fa-angle-down"></i> -->
+                        <p>{{auth()->user()->username}}</p>
                     </div>
                 </div>
             </div>
             <div id="profile-menu">
-                <img src="https://picsum.photos/200"" alt="">
+               <h4>{{auth()->user()->username}}</h4>
                 <p>Profile</p>
                 <p>Change password</p>
                 
-
-                <button class="btn btn-sm btn-primary" style="margin-top :15px;">Logout</button>
+                <form action="{{url('auth/logout')}}" method="post">
+                    @csrf
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top :15px;">Logout</button>
+                </form>
             </div>
+
 
             @yield("content")
         </div>

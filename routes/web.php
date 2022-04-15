@@ -19,17 +19,19 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/',[AuthController::class, 'login']);
+Route::get('/',[AuthController::class, 'login'])->name("login");
 Route::get('/dashboard',function(){
     return view("dashboard");
-});
+})->middleware("auth");
 
-Route::resource('/projects',ProjectController::class);
-Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download']);
-Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view']);
+Route::resource('/projects',ProjectController::class)->middleware("auth");
+Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware("auth");
+Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view'])->middleware("auth");
 
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
+Route::post('/auth/logout',[AuthController::class, 'logout']);
+
 Route::post('/auth/store',[AuthController::class, 'store']);
 Route::post('/auth/check',[AuthController::class, 'check']);
 
@@ -40,16 +42,17 @@ Route::get('/users',function(){
 });
 
 
-Route::get('/role',[RoleController::class, 'index']);
-Route::get('/role/create',[RoleController::class, 'create']);
+Route::get('/role',[RoleController::class, 'index'])->middleware("auth");
+Route::get('/role/create',[RoleController::class, 'create'])->middleware("auth");
 Route::post('/role/store',[RoleController::class, 'store']);
-Route::get('/role/edit/{role}',[RoleController::class, 'edit']);
+Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware("auth");
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
-Route::get('/role/delete/{role}',[RoleController::class, 'destroy']);
+Route::get('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
 
-Route::get('/user',[UserController::class, 'index']);
-Route::get('/user/edit/{user}',[UserController::class, 'edit']);
-Route::post('/user/update/{role}',[UserController::class, 'update']);
-Route::get('/user/delete/{role}',[UserController::class, 'destroy']);
+Route::get('/user',[UserController::class, 'index'])->middleware("auth");
+Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware("auth");
+Route::post('/user/update/{user}',[UserController::class, 'update']);
+Route::get('/user/block/{user}',[UserController::class, 'block'])->middleware("auth");
+Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware("auth");
 
 

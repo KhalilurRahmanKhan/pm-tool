@@ -4,16 +4,16 @@ Edit the role
 @endsection
 @section("content")
 
-<form action="{{url('role/update')}}" method="post">
+<form action="{{url('user/update')}}/{{$user->id}}" method="post">
     @csrf
     <div class="role-form">
     <div class="" style="width:100%;">
     <label for="">Role</label><br>
     <div class=" input-div">
-        <select  name="initiated_for"  id="">
+        <select  name="role"  id="">
             <option value="" selected>Select one</option>
-            @foreach($users as $user)
-            <option value="{{$user->id}}">{{$user->username}}</option>
+            @foreach($roles as $role)
+            <option value="{{$role->id}}">{{$role->role}}</option>
             @endforeach
         </select> 
 
@@ -23,7 +23,7 @@ Edit the role
             
             
            </div>
-            <div class="button">
+            <div class="button" style="width:45%;">
                 <input type="submit" name="" value="Edit" class="colored-btn">
     </div>
 </form>

@@ -21,11 +21,24 @@ Users
     <tr>
       <th scope="row" >{{$user->id}}</th>
       <td width="20%">{{$user->username}}</td>
-      <td width="50%">{{$user->role}}</td>
+      <td width="50%">
+        @if($user->role_id == "")
+          {{"New"}}
+        @else
+        {{$user->role->role}}       
+         @endif
+    </td>
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('/user/edit')}}/{{$user->id}}"><button type="button" class="btn btn-secondary">Change Role</button></a>
-        <a href="{{url('/user/delete')}}/{{$user->id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+        <a href="{{url('/user/edit')}}/{{$user->id}}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+        <a href="{{url('/user/block')}}/{{$user->id}}"><button type="button" class="btn btn-sm btn-warning">
+          @if($user->block == 0)
+            Block
+          @else
+            Unblock
+          @endif
+        </button></a>
+        <a href="{{url('/user/delete')}}/{{$user->id}}"><button type="button" class="btn btn-sm btn-danger">Delete</button></a>
       </div>
       </td>
     </tr>

@@ -26,10 +26,14 @@ class AuthController extends Controller
 
         
             if (Auth::attempt($credentials)) {
-                if(auth()->user()->role == "new"){
+                if(auth()->user()->role_id == ""){
                     return back()->with('msg',"Please confirm your role first!");
                 }
+                if(auth()->user()->block == 1){
+                    return back()->with('msg',"Your account has been blocked!");
+                }
                 else{
+                    auth()->attempt($request->only('username',"password"));
                     return redirect()->intended('dashboard');
                 } 
             } 
@@ -59,5 +63,10 @@ class AuthController extends Controller
 
 
 
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect("/");
     }
 }
