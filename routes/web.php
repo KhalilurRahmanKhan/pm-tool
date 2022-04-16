@@ -7,6 +7,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,8 @@ Route::get('/role/create',[RoleController::class, 'create'])->middleware("auth")
 Route::post('/role/store',[RoleController::class, 'store']);
 Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware("auth");
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
-Route::get('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
+Route::delete('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
+Route::post('/role/ax',[RoleController::class, 'ax']);
 
 Route::get('/user',[UserController::class, 'index'])->middleware("auth");
 Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware("auth");
@@ -56,3 +58,5 @@ Route::get('/user/block/{user}',[UserController::class, 'block'])->middleware("a
 Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware("auth");
 
 
+
+Route::get('dashboard/sweet',[DashboardController::class, 'sweet']);

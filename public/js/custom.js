@@ -3,6 +3,7 @@ $(document).ready(function(){
     $("#profile").click(function(){
       $("#profile-menu").slideToggle();
     });
+    
   });
 
 document.getElementById('start_date').addEventListener("change",function(){
@@ -31,5 +32,6 @@ document.getElementById('end_date').addEventListener("change",function(){
     document.getElementById('duration').value=diffDays;
 
 });
+
 
 

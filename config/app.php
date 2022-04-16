@@ -138,6 +138,7 @@ return [
 
     'providers' => [
         Intervention\Image\ImageServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
 
         /*
@@ -194,6 +195,11 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Image' => Intervention\Image\Facades\Image::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
+     
+
+
 
         // ...
     ])->toArray(),

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class RoleController extends Controller
@@ -52,6 +53,8 @@ class RoleController extends Controller
         ]);
 
         return redirect('/role');
+     
+
     }
 
     /**
@@ -97,7 +100,20 @@ class RoleController extends Controller
         $role->comments = $request->comments;
         $role->save();
 
+
+        // Alert::success('Congrats', 'Data has been updated');
+        // Alert::alert('Title', 'Message', 'Type');
+        // Alert::toast('Toast Message', 'Toast Type');
+        // Alert::html('Html Title', 'Html Code', 'Type');
+        alert()->html('<i>HTML</i> <u>example</u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> and other HTML tags ",'success');
+
+
+
+
         return redirect('/role');
+
+ 
+
 
     }
 
@@ -112,5 +128,18 @@ class RoleController extends Controller
         $role->delete();
 
         return back();
+    }
+
+
+    public function ax(Request $request)
+    {
+        $role = new Role();
+        $role->role = $request->role;
+        $role->comments = $request->comments;
+
+        $role->save();
+        return response()->json(['success'=>'Data is successfully added']);
+
+
     }
 }
