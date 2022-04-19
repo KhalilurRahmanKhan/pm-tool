@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use RealRashid\SweetAlert\Facades\Alert;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class RoleController extends Controller
@@ -142,4 +143,20 @@ class RoleController extends Controller
 
 
     }
+
+
+
+    public function print(Request $request)
+    {
+      
+    $role = Role::all();
+
+    $pdf = PDF::loadView('pdf.role', [
+        'role' => $role,
+    ]);
+    return $pdf->stream('role.pdf');
+
+    }
+
+
 }

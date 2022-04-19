@@ -21,9 +21,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/',[AuthController::class, 'login'])->name("login");
-Route::get('/dashboard',function(){
-    return view("dashboard");
-})->middleware("auth");
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware("auth");
 
 Route::resource('/projects',ProjectController::class)->middleware("auth");
 Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware("auth");
@@ -50,6 +48,7 @@ Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware("aut
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
 Route::delete('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
 Route::post('/role/ax',[RoleController::class, 'ax']);
+Route::get('/role/print',[RoleController::class, 'print']);
 
 Route::get('/user',[UserController::class, 'index'])->middleware("auth");
 Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware("auth");

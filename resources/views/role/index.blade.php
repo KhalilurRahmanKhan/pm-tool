@@ -8,6 +8,7 @@ Roles
       <div class="row mb-3">
     <div class="col-md-11">
         <a href="{{url('role/create')}}"><button type="button" class="btn btn-secondary">Add new role</button></a>
+        <a href="{{url('role/print')}}"><button type="button" class="btn btn-secondary">Print</button></a>
     </div>
 </div>
 
