@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class CheckRole
 {
@@ -16,7 +17,13 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next)
     {
+        if(Auth::user()->role_id == 1){
+            return $next($request);
+        }
+        else{
+            return redirect("dashboard");
+        }
         
-        return $next($request);
+        
     }
 }

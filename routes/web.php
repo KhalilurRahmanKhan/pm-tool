@@ -23,7 +23,7 @@ use App\Http\Controllers\DashboardController;
 Route::get('/',[AuthController::class, 'login'])->name("login");
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware("auth");
 
-Route::resource('/projects',ProjectController::class)->middleware("auth");
+Route::resource('/projects',ProjectController::class)->middleware(["auth","check"]);
 Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware("auth");
 Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view'])->middleware("auth");
 
