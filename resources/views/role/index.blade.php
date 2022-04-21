@@ -5,46 +5,63 @@ Roles
 @section("content")
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mx-auto">
 
-      <div class="row mb-3">
-    <div class="col-md-11">
-        <a href="{{url('role/create')}}"><button type="button" class="btn btn-secondary">Add new role</button></a>
-        <a href="{{url('role/print')}}"><button type="button" class="btn btn-secondary">Print</button></a>
+      <div class="row ">
+    <div class="col-md-10">
+    <!-- <div class="input-div">
+        <label for=""></label><br>
+        <select  name="initiated_for"  id="">
+            <option value="" selected>Select one</option>
+            <option value=""></option>
+        </select> 
+        
+   </div> -->
+    </div>
+    <div class="col-md-2">
+        <a href="{{url('role/create')}}"><button type="button" class="blue-btn">Create New</button></a>
     </div>
 </div>
 
+<table class="pm-table">
 
-
-<table class="table table-success table-striped">
-    <thead>
-    <tr>
-      <th scope="col">#</th>
+        <tr class="pm-thead">
+        <th scope="col">#</th>
       <th scope="col">Role</th>
       <th scope="col">Comments</th>
       <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($role as $item)
-    <tr>
-      <th scope="row" >{{$item->id}}</th>
-      <td width="20%">{{$item->role}}</td>
-      <td width="50%">{{$item->comments}}</td>
-      <td>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('/role/edit')}}/{{$item->id}}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
-        
+        </tr>
+ 
+        @foreach($role as $item)
+        <tr class="pm-tbody">
+            <td>{{$item->id}}</td>
+            <td>{{$item->role}}</td>
+            <td>{{$item->comments}}</td>
+            <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{url('/role/edit')}}/{{$item->id}}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
+
+        <form action="{{ url('role/delete')}}/{{$item->id }}" method="POST">
+            @csrf
+
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+<!--         
         <form method="POST" action="{{url('/role/delete')}}/{{$item->id}}}">
             @csrf
             <input name="_method" type="hidden" value="DELETE">
-            <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
-        </form>
+            <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
+        </form> -->
+
       </div>
-      </td>
-    </tr>
-    @endforeach
-    
-  </tbody>
+            </td>
+        </tr>
+        @endforeach
+
+
 </table>
+
+
 </main>
 
 

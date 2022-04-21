@@ -1,7 +1,7 @@
 
 @extends("layouts.app")
 @section("content")
-<form id="role_submit"  >
+<form method="post" action="{{url('role/store')}}"  >
     @csrf
 <div class="role-form">
            <div class="input-div">
@@ -28,7 +28,7 @@
     </div>
     
 </form>
-
+<!-- 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 jQuery(document).ready(function(){
@@ -58,7 +58,7 @@ jQuery(document).ready(function(){
       });
   });
   </script>
-  
+   -->
  
 
 @endsection

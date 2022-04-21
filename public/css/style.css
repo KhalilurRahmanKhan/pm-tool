@@ -30,12 +30,11 @@ body{
     color: white;
     font-size: 20px;
     text-align: left;
-    margin-bottom: -2px;
     padding-left: 40px;
 }
 
 .item{
-    font-size: 16px !important;
+    font-size: 20px !important;
     padding: 5px 0px;
     text-align: left !important;
     padding-left: 60px !important;
@@ -50,6 +49,7 @@ body{
     border-left: 5px solid white;
     padding-left: 55px !important;
     cursor: pointer;
+    color: #d1cfdb;
 }
 
 .right{
@@ -65,7 +65,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 50px!important;
+    margin-bottom: 10px!important;
     margin-top: 0px;
 }
 
@@ -184,7 +184,7 @@ body{
     z-index: 10;
     display: none;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 #profile-menu h4{
@@ -212,3 +212,59 @@ body{
 
 }
 
+
+.pm-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+
+}
+.pm-thead{
+    background: rgb(180,175,202);
+    background: linear-gradient(180deg, rgb(211 208 223) 2%, rgba(222,217,250,1) 15%, rgba(222,217,250,1) 85%, rgb(182 178 199) 98%);
+
+    text-align: center;
+    padding: 10px;
+    border-radius:5px;
+    /* box-shadow: -2px 7px 9px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -2px 7px 9px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 7px 9px -3px rgba(0,0,0,0.75);
+    margin-bottom: 10px; */
+
+  
+}
+.pm-tbody{
+    background-color: #F4F2FF;
+    text-align: center;
+    border-radius:5px;
+    box-shadow: -1px 0px 13px 1px rgb(0 0 0 / 30%);
+    -webkit-box-shadow: -1px -7px 5px -4px rgb(0 0 0 / 30%);
+    -moz-box-shadow: -1px 0px 13px 1px rgba(0,0,0,0.3);
+
+  
+}
+.pm-thead th{
+    padding: 10px;
+    margin-bottom: 50px;
+}
+.pm-thead th:first-child { border-top-left-radius: 5px; }
+.pm-thead th:last-child { border-top-right-radius: 5px; }
+.pm-thead th:first-child { border-bottom-left-radius: 5px; }
+.pm-thead th:last-child { border-bottom-right-radius: 5px; }
+
+
+.pm-tbody td{
+    padding: 10px;
+}
+.pm-tbody td:first-child { border-top-left-radius: 5px; }
+.pm-tbody td:last-child { border-top-right-radius: 5px; }
+.pm-tbody td:first-child { border-bottom-left-radius: 5px; }
+.pm-tbody td:last-child { border-bottom-right-radius: 5px; }
+
+.blue-btn{
+    background-color: #16009E;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}

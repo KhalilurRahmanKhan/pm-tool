@@ -47,7 +47,7 @@ Route::post('/role/store',[RoleController::class, 'store']);
 Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware("auth");
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
 Route::delete('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
-Route::post('/role/ax',[RoleController::class, 'ax']);
+// Route::post('/role/ax',[RoleController::class, 'ax']);
 Route::get('/role/print',[RoleController::class, 'print']);
 
 Route::get('/user',[UserController::class, 'index'])->middleware("auth");
@@ -58,4 +58,6 @@ Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware
 
 
 
-Route::get('dashboard/sweet',[DashboardController::class, 'sweet']);
+Route::get('test',function (){
+  return  view ("test");
+});

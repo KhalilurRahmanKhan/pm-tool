@@ -106,7 +106,7 @@ class RoleController extends Controller
         // Alert::alert('Title', 'Message', 'Type');
         // Alert::toast('Toast Message', 'Toast Type');
         // Alert::html('Html Title', 'Html Code', 'Type');
-        alert()->html('<i>HTML</i> <u>example</u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> and other HTML tags ",'success');
+        // alert()->html('<i>HTML</i> <u>example</u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> and other HTML tags ",'success');
 
 
 
@@ -132,31 +132,31 @@ class RoleController extends Controller
     }
 
 
-    public function ax(Request $request)
-    {
-        $role = new Role();
-        $role->role = $request->role;
-        $role->comments = $request->comments;
+    // public function ax(Request $request)
+    // {
+    //     $role = new Role();
+    //     $role->role = $request->role;
+    //     $role->comments = $request->comments;
 
-        $role->save();
-        return response()->json(['success'=>'Data is successfully added']);
-
-
-    }
+    //     $role->save();
+    //     return response()->json(['success'=>'Data is successfully added']);
 
 
+    // }
 
-    public function print(Request $request)
-    {
+
+
+    // public function print(Request $request)
+    // {
       
-    $role = Role::all();
+    // $role = Role::all();
 
-    $pdf = PDF::loadView('pdf.role', [
-        'role' => $role,
-    ]);
-    return $pdf->stream('role.pdf');
+    // $pdf = PDF::loadView('pdf.role', [
+    //     'role' => $role,
+    // ]);
+    // return $pdf->stream('role.pdf');
 
-    }
+    // }
 
 
 }
