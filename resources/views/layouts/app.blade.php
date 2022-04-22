@@ -24,28 +24,30 @@
     <div class="main">
         <div class="left">
             <div class="brand-name">
-                <p>Machine Xtreme</p>
+                <a href="{{url('dashboard')}}" style="text-decoration:none; color:white;"><p style="text-decoration:none;">Machine Xtreme</p></a>
             </div>
            @if(auth()?->user()?->role_id == 1)
             <div class="menu">
                 <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
-                <a  href="{{url('projects')}}"><p class="item">Projects</p></a>  
+                <a  href="{{url('projects')}}"><p class="item"><i class="fa-solid fa-bars-progress"></i>Projects</p></a>  
                 <!-- <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>   -->
             </div>
-            @endif
+         
             <div class="menu">
                 <!-- <a href="{{url('role')}}"><p>Roles</p></a> -->
-                <a  href="{{url('role')}}"><p class="item">Roles</p></a>  
+                <a  href="{{url('role')}}"><p class="item"><i class="fa-solid fa-network-wired"></i>Roles</p></a>  
+
 
                 <!-- <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>    -->
             </div>
             <div class="menu">
                 <!-- <a href="{{url('user')}}"><p>Users</p></a> -->
-                <a  href="{{url('user')}}"><p class="item">Users</p></a>  
+                <a  href="{{url('user')}}"><p class="item"><i class="fa-solid fa-users"></i>Users</p></a>  
 
 
                 <!-- <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>    -->
             </div>
+            @endif
           
         </div>
         <div class="right">

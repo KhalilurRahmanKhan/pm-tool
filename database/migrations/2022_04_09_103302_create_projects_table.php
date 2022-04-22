@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('duration');
             $table->integer('project_owner');
             $table->String('remarks');
-            $table->String('attachment')->default('fgsd');
+            $table->String('attachment')->nullable();
             $table->timestamps();
         });
     }

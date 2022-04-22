@@ -5,17 +5,17 @@ Projects
 @section("content")
 <main class="col-md-8 ms-sm-auto col-lg-10 m-auto">
    
-<div class="row mb-3">
-    <div class="col-md-6">
-    <a href="/projects/create"><button type="button" class="btn btn-secondary">Create new project</button></a>
-
+<div class="row ">
+    <div class="col-md-10">
+    </div>
+    <div class="col-md-2">
+        <a href="{{url('projects/create')}}"><button type="button" class="blue-btn">Create New</button></a>
     </div>
 </div>
+<table class="pm-table">
 
-<table class="table table-success table-striped">
-    <thead>
-    <tr>
-      <th scope="col">Project Name</th>
+        <tr class="pm-thead">
+        <th scope="col">Project Name</th>
       <th scope="col">Code</th>
       <th scope="col">Initiated for</th>
       <th scope="col">Description</th>
@@ -23,32 +23,52 @@ Projects
       <th scope="col">Owner</th>
       <th scope="col">Attachment</th>
       <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  @forelse($projects as $project)
-    <tr>
-      <td>{{$project->name}}</td>
+        </tr>
+ 
+        @forelse($projects as $project)
+        <tr class="pm-tbody">
+        <td>{{$project->name}}</td>
       <td>{{$project->code}}</td>
       <td>{{$project->initiated_for}}</td>
       <td>{{$project->description}}</td>
       <td>{{$project->duration}}</td>
       <td>{{$project->project_owner}}</td>
+           
       <td>
+     
       <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('projects/attachment/view')}}/{{$project->attachment}}"><button type="button" class="btn btn-sm btn-primary">View</button></a>
-        <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}"><button type="button" class="btn btn-sm btn-info">Download</button></a>
+        <a href="{{url('projects/attachment/view')}}/{{$project->attachment}}" 
+        <?php
+        if($project->attachment == null)
+       echo "style='pointer-events: none'";
+          ?>
+        >
+          <button
+        type="button" class="btn btn-sm btn-primary" 
+        <?php
+        if($project->attachment == null)
+          echo "disabled "; echo "style='pointer-events: none'";
+          ?>
+          
+        ><i class="fa-solid fa-eye"></i></button></a>
+        <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}" <?php
+        if($project->attachment == null)
+       echo "style='pointer-events: none'";
+          ?>><button   <?php
+          if($project->attachment == null)
+            echo "disabled "; echo "style='pointer-events: none'";
+            ?> type="button" class="btn btn-sm btn-info"><i class="fa-solid fa-download"></i></button></a>
       </div>
       </td>
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary">Edit</button></a>
+        <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
         <form action="{{ url('projects')}}/{{$project->id }}" method="POST">
             @csrf
 
             @method('DELETE')
 
-            <button type="submit" class="btn btn-sm btn-danger btn-block">Delete</button>
+            <button type="submit" class="btn btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
         </form>
 
 
@@ -60,8 +80,9 @@ Projects
     
     </tr>
   @endforelse
-    
-  </tbody>
+        
+
 </table>
+
 </main>
 @endsection

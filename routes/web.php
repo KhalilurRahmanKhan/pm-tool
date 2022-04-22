@@ -24,8 +24,8 @@ Route::get('/',[AuthController::class, 'login'])->name("login");
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware("auth");
 
 Route::resource('/projects',ProjectController::class)->middleware(["auth","check"]);
-Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware("auth");
-Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view'])->middleware("auth");
+Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware(["auth","check"]);
+Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view'])->middleware(["auth","check"]);
 
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
@@ -41,20 +41,20 @@ Route::get('/users',function(){
 });
 
 
-Route::get('/role',[RoleController::class, 'index'])->middleware("auth");
-Route::get('/role/create',[RoleController::class, 'create'])->middleware("auth");
+Route::get('/role',[RoleController::class, 'index'])->middleware(["auth","check"]);
+Route::get('/role/create',[RoleController::class, 'create'])->middleware(["auth","check"]);
 Route::post('/role/store',[RoleController::class, 'store']);
-Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware("auth");
+Route::get('/role/edit/{role}',[RoleController::class, 'edit'])->middleware(["auth","check"]);
 Route::post('/role/update/{role}',[RoleController::class, 'update']);
-Route::delete('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware("auth");
+Route::delete('/role/delete/{role}',[RoleController::class, 'destroy'])->middleware(["auth","check"]);
 // Route::post('/role/ax',[RoleController::class, 'ax']);
-Route::get('/role/print',[RoleController::class, 'print']);
+// Route::get('/role/print',[RoleController::class, 'print']);["auth","check"]
 
-Route::get('/user',[UserController::class, 'index'])->middleware("auth");
-Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware("auth");
+Route::get('/user',[UserController::class, 'index'])->middleware(["auth","check"]);
+Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware(["auth","check"]);
 Route::post('/user/update/{user}',[UserController::class, 'update']);
-Route::get('/user/block/{user}',[UserController::class, 'block'])->middleware("auth");
-Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware("auth");
+Route::get('/user/block/{user}',[UserController::class, 'block'])->middleware(["auth","check"]);
+Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware(["auth","check"]);
 
 
 
