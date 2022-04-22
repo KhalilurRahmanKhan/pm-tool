@@ -32,7 +32,15 @@ Users
           <i class="fa-solid fa-lock-open"></i>
           @endif
         </button></a>
-        <a href="{{url('/user/delete')}}/{{$user->id}}"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i></button></a>
+
+   
+
+        <form method="POST" action="{{url('/user/delete')}}/{{$user->id}}">
+            @csrf
+            <input name="_method" type="hidden" value="DELETE">
+            <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
+        </form>
+
       </div></td>
         </tr>
         @endforeach
@@ -43,4 +51,30 @@ Users
 
 
 </main>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
+ 
+     $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Are you sure you want to delete this record?`,
+              text: "If you delete this, it will be gone forever.",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+  
+</script>
 @endsection

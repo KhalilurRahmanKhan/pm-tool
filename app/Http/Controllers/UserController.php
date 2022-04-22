@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use Alert;
 
 
 class UserController extends Controller
@@ -16,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('id', 'asc')->get();
 
         return view("user.index",[
             'users' => $users,
@@ -85,6 +86,8 @@ class UserController extends Controller
 
         $user->role_id = $request->role;
         $user->save();
+        Alert::success('Congrats', 'Data has been updated');
+
 
         return redirect('/user');
     }
@@ -101,11 +104,27 @@ class UserController extends Controller
 
         $user->save();
 
+        if($user->block == true){
+
+            Alert::success('Congrats', 'User has been blocked');
+        }
+        else{
+            Alert::success('Congrats', 'User has been unblocked');
+
+        }
+
+
         return back();
     }
+
+
+
     public function destroy(User $user)
     {
         $user->delete();
+
+        Alert::success('Congrats', 'Data has been deleted');
+
 
         return back();
     }

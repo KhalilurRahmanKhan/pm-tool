@@ -39,19 +39,20 @@ Roles
             <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{{url('/role/edit')}}/{{$item->id}}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
 
-        <form action="{{ url('role/delete')}}/{{$item->id }}" method="POST">
+        <!-- <form action="{{ url('role/delete')}}/{{$item->id }}" method="POST">
             @csrf
 
             @method('DELETE')
 
             <button type="submit" class="btn btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
-        </form>
-<!--         
-        <form method="POST" action="{{url('/role/delete')}}/{{$item->id}}}">
+        </form> -->
+        
+        <form method="POST" action="{{ url('role/delete')}}/{{$item->id }}">
             @csrf
+
             <input name="_method" type="hidden" value="DELETE">
             <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
-        </form> -->
+        </form>
 
       </div>
             </td>

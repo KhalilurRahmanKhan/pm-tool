@@ -17,7 +17,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role = Role::all();
+        $role = Role::orderBy('id', 'asc')->get();
 
         return view("role.index",[
             'role' => $role,
@@ -53,7 +53,10 @@ class RoleController extends Controller
             'comments' => $request->comments,
         ]);
 
-        return redirect('/role');
+        Alert::success('Congrats', 'Data has been stored');
+
+
+        return back();
      
 
     }
@@ -102,7 +105,7 @@ class RoleController extends Controller
         $role->save();
 
 
-        // Alert::success('Congrats', 'Data has been updated');
+        Alert::success('Congrats', 'Data has been updated');
         // Alert::alert('Title', 'Message', 'Type');
         // Alert::toast('Toast Message', 'Toast Type');
         // Alert::html('Html Title', 'Html Code', 'Type');
@@ -127,6 +130,9 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
+
+        Alert::success('Congrats', 'Data has been deleted');
+
 
         return back();
     }

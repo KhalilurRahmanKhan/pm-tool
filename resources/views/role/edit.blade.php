@@ -10,7 +10,7 @@ Edit the role
 <div class="role-form">
            <div class="input-div">
                 <label for="">Role</label><br>
-                <input type="text" name="role" value="{{$role->role}}" placeholder="Type the role"><br>
+                <input autofocus type="text" name="role" value="{{$role->role}}" placeholder="Type the role"><br>
                  @error('role')
                 <small class="text-danger">{{$message}}</small>
             @enderror

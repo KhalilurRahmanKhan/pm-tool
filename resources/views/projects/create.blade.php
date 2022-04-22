@@ -8,7 +8,7 @@ Create a project
 <div class="role-form">
     <div class="" style="width:100%;">
         <label for="">Project Name</label><br>
-        <input class="input-div-full" name="name" id="" cols="30" rows="5" value="{{old('name')}}"></input><br>
+        <input autofocus class="input-div-full" name="name" id="" cols="30" rows="5" value="{{old('name')}}"></input><br>
         @error('name')
                 <small class="text-danger">{{$message}}</small>
             @enderror

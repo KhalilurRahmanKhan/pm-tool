@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Alert;
 
 class ProjectController extends Controller
 {
@@ -99,9 +100,10 @@ class ProjectController extends Controller
             $return_after_create->save();
         }
 
+        Alert::success('Congrats', 'Data has been stored');
 
 
-        return redirect('/projects');
+        return back();
     }
 
     /**
@@ -189,8 +191,9 @@ class ProjectController extends Controller
         }
 
 
+        Alert::success('Congrats', 'Data has been updated');
 
-        return redirect('/projects');
+        return redirect()->to('/projects');
     }
 
     /**
@@ -210,7 +213,11 @@ class ProjectController extends Controller
         if(File::exists($path)){
             File::delete($path);
         }
+
         $project->delete();
+
+        Alert::success('Congrats', 'Data has been deleted');
+
 
         return back();
        

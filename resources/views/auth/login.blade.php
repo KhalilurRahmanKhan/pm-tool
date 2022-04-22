@@ -24,7 +24,7 @@
     <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="" name="username" autocomplete="off">
+      <input type="text" class="form-control" id="floatingInput" autofocus placeholder="" name="username" autocomplete="off">
       <label for="floatingInput">Username</label>
     </div>
     @error('username')

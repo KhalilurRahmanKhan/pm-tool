@@ -54,7 +54,7 @@ Route::get('/user',[UserController::class, 'index'])->middleware(["auth","check"
 Route::get('/user/edit/{user}',[UserController::class, 'edit'])->middleware(["auth","check"]);
 Route::post('/user/update/{user}',[UserController::class, 'update']);
 Route::get('/user/block/{user}',[UserController::class, 'block'])->middleware(["auth","check"]);
-Route::get('/user/delete/{user}',[UserController::class, 'destroy'])->middleware(["auth","check"]);
+Route::delete('/user/delete/{user}',[UserController::class, 'destroy'])->middleware(["auth","check"]);
 
 
 

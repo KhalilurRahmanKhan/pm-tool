@@ -24,8 +24,8 @@
     <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
-      <label for="floatingInput">username</label>
+      <input autofocus type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+      <label for="floatingInput">Username</label>
     </div>
     @error('username')
         <small class="text-danger">{{$message}}</small>
