@@ -103,6 +103,8 @@ class ProjectController extends Controller
         Alert::success('Congrats', 'Data has been stored');
 
 
+        // return redirect()->to('/projects/create'); 
+
         return back();
     }
 
@@ -206,9 +208,14 @@ class ProjectController extends Controller
     {
 
 
-        $file = Project::find($project);
-        $path = public_path("uploads/projects/".$file[0]->attachment);
-        echo $path;
+        // $file = Project::find($project);
+
+        // $file = Project:::where('id', explode(',' $test))->get();
+
+        $path = public_path("uploads/projects/".$project->attachment);
+
+     
+ 
 
         if(File::exists($path)){
             File::delete($path);

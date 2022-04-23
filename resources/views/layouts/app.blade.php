@@ -89,5 +89,16 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{asset('js/custom.js')}}"></script>
 
+    <script>
+        var perfEntries = performance.getEntriesByType("navigation");
+
+        if (perfEntries[0].type === "back_forward") {
+            {{Session()->pull('success')}}
+            location.reload(true);
+        }
+    </script>
+
+   
+
 </body>
 </html>

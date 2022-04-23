@@ -64,21 +64,21 @@ Projects
       <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
 
-        
+<!--         
         <form action="{{ url('projects')}}/{{$project->id }}" method="POST">
             @csrf
 
             @method('DELETE')
 
             <button type="submit" class="btn btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
-        </form>
+        </form> -->
 
-        <!-- <form method="POST" action="{{ url('projects')}}/{{$project->id }}">
+        <form method="POST" action="{{ url('projects')}}/{{$project->id }}">
             @csrf
 
             <input name="_method" type="hidden" value="DELETE">
             <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
-        </form> -->
+        </form>
 
 
       </div>
@@ -96,7 +96,7 @@ Projects
 </main>
 
 
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script type="text/javascript">
  
@@ -118,5 +118,7 @@ Projects
           });
       });
   
-</script> -->
+</script>
+
+
 @endsection

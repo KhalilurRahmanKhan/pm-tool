@@ -1,3 +1,4 @@
+
 @extends("layouts.app")
 @section("title")
 Users
@@ -77,4 +78,5 @@ Users
       });
   
 </script>
+
 @endsection

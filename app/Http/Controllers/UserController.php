@@ -107,6 +107,14 @@ class UserController extends Controller
         if($user->block == true){
 
             Alert::success('Congrats', 'User has been blocked');
+
+
+            //  Alert::alert('Title', 'Message', 'Type');
+        // Alert::toast('Toast Message', 'Toast Type');
+        // Alert::html('Html Title', 'Html Code', 'Type');
+        // alert()->html('<i>HTML</i> <u>example</u>'," You can use <b>bold text</b>, <a href='//github.com'>links</a> and other HTML tags ",'success');
+
+
         }
         else{
             Alert::success('Congrats', 'User has been unblocked');
@@ -115,6 +123,8 @@ class UserController extends Controller
 
 
         return back();
+
+       
     }
 
 
@@ -129,3 +139,4 @@ class UserController extends Controller
         return back();
     }
 }
+
