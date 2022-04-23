@@ -20,7 +20,9 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/',[AuthController::class, 'login'])->name("login");
+Route::get('/',function (){
+  return view ("home");
+})->name("login");
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware("auth");
 
 Route::resource('/projects',ProjectController::class)->middleware(["auth","check"]);
