@@ -11,7 +11,7 @@
 <body>
     <div class="container">
     <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
-        <h1 class="text-center mt-5">Welcome to Mx Project</h1>
+        <h3 class="text-center mt-5">Welcome to Mx Project Management Tool</h3>
 
         <div class="text-center mt-4">
       

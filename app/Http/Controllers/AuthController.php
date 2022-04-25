@@ -69,4 +69,30 @@ class AuthController extends Controller
         auth()->logout();
         return redirect("/");
     }
+
+    public function changePassword(Request $request){
+        $request->validate([
+            "old_password" => "required",
+            "password" => "required|confirmed",
+        ]);
+
+        $db_password = Auth::user()->password;
+        $old_password = $request->old_password;
+
+        if(Hash::check($old_password, $db_password)){
+            $user = User::find(Auth::id());
+            
+            $user->password = Hash::make($request->password);
+            
+            $user->save();
+            return back()->with('msg','Your password has been changed');
+
+        }
+        else{
+            return back()->withErrors(['message'=>'Old password does not match']);
+        }
+
+
+        
+    }
 }

@@ -54,7 +54,7 @@ body{
 
 .right{
     width: calc(100vw - 200px);
-    margin-left: 200px;
+    margin-left: 210px;
 
 }
 .nav{
@@ -124,9 +124,11 @@ body{
     width: 83%;
    margin-left: 90px;
 }
+form{
+    margin-left: 80px;
+}
 .input-div{
     width: 50%;
-    font-weight: bold;
 }
 
 .input-div input{
@@ -148,9 +150,13 @@ body{
     border-bottom: 4px solid #16009E;
     border-radius: 5px;
 }
+.attachment{
+    display:;
+}
 .input-div-full {
     width: 95%;
     padding: 10px;
+    
     border: none;
     outline: none;
     background-color: #F4F3FC;
@@ -175,8 +181,8 @@ body{
     color: white;
 }
 #profile-menu{
-    width: 200px;
-    height: 220px;
+    width: 150px;
+    height: 170px;
     background-color: #16009E;
     position: fixed;
     right: 10px;
@@ -193,10 +199,11 @@ body{
     margin-bottom: 10px;
 }
 
-#profile-menu p{
+#profile-menu a{
      
     color: white;
-    font-size: 17px;
+    font-size: 15px;
+    text-decoration: none;
     padding: 0px;
     margin: 0px;
     height: 35px;
@@ -205,7 +212,7 @@ body{
     align-items: center;
 
 }
-#profile-menu p:hover{
+#profile-menu a:hover{
      
     background-color: #2a16af;
 

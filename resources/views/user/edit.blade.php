@@ -3,8 +3,9 @@
 Edit the role
 @endsection
 @section("content")
-
-<form action="{{url('user/update')}}/{{$user->id}}" method="post">
+<div class="row" style="    margin-left: 145px;">
+    <div class="col-md-8 mx-auto ml-5">
+    <form action="{{url('user/update')}}/{{$user->id}}" method="post">
     @csrf
     <div class="role-form">
     <div class="" style="width:100%;">
@@ -28,5 +29,9 @@ Edit the role
     </div>
 </form>
      
+    </div>
+</div>
+
+
 
 @endsection

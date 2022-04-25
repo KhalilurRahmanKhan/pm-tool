@@ -52,7 +52,7 @@
       <small class="text-danger"> {{session()->get("msg")}}</small>
     @endif
 
-    <p class="mt-5 mb-3 text-muted">If you are already registered, <a href="{{url('/')}}">login here</a>.</p>
+    <p class="mt-5 mb-3 text-muted">If you are already registered, <a href="{{url('auth/login')}}">login here</a>.</p>
   </form>
 </main><br>
 

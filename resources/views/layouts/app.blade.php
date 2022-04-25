@@ -68,8 +68,8 @@
             </div>
             <div id="profile-menu">
                <h4>{{auth()->user()?->username}}</h4>
-                <p>Profile</p>
-                <p>Change password</p>
+               
+                <a class="mb-2" href="{{url('auth/change/password')}}">Change password</a>
                 
                 <form action="{{url('auth/logout')}}" method="post">
                     @csrf

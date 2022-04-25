@@ -32,6 +32,10 @@ Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view']
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
 Route::post('/auth/logout',[AuthController::class, 'logout']);
+Route::post('/auth/change/password',[AuthController::class, 'changePassword']);
+Route::get('/auth/change/password',function (){
+  return view('auth.changePassword');
+});
 
 Route::post('/auth/store',[AuthController::class, 'store']);
 Route::post('/auth/check',[AuthController::class, 'check']);
