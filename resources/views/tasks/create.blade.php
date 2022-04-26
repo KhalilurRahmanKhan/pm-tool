@@ -1,45 +1,76 @@
 @extends("layouts.app")
+@section("title")
+Create a task
+@endsection
 @section("content")
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Tasks</h1>
-      </div> 
-
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-        <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <textarea  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></textarea>
-        </div>
-        <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">Start date</label>
-                <input type="date" class="form-control" id="firstName" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  Valid first name is required.
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="lastName">End date</label>
-                <input type="date" class="form-control" id="lastName" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
-              </div>
-            </div>
-    
-        <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        </div>
+<form action="{{url('projects')}}" method="post" enctype="multipart/form-data">
+    @csrf
+<div class="role-form">
+    <div class="" style="width:100%;">
+        <label for="">Task Name</label><br>
+        <input autofocus class="input-div-full" name="name" id="" cols="30" rows="5" value="{{old('name')}}"></input><br>
+        @error('name')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
     </div>
+   
+    
+</div>
+<div class="role-form">
+    <div class="input-div">
+        <label for="">Start date</label><br>
+        <input type="date"  name="code" value="{{old('code')}}" ><br>
+        @error('code')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
+    </div>
+    <div class="input-div">
+        <label for="">End date</label><br>
+        <input type="date"  name="initiated_for" value="{{old('initiated_for')}}" ><br>
+        @error('initiated_for')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
+    </div>
+    
+</div>
+<div class="role-form">
+    <div class="" style="width:100%;">
+        <label for="">Task details</label><br>
+        <textarea class="input-div-full"  name="description" value="{{old('description')}}"  id="" cols="30" rows="5"></textarea><br>
+        @error('description')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
+    </div>
+   
+    
+</div>
 
-  
+<div class="role-form">
+<div class="input-div">
+        <label for="">Project owner</label><br>
+        <select name="project_owner" id="">
+            <option value="" selected>Select one</option>
+          
+           
+        </select> <br>
+        @error('project_owner')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
+   </div>
+    <div class="input-div">
+        <label for="">Attachment</label><br>
+        <input type="file"  name="remarks" value="{{old('remarks')}}" ><br>
+        @error('remarks')
+                <small class="text-danger">{{$message}}</small>
+            @enderror
+    </div>  
+</div>
+<input type="hidden" value="{{$project_id}}">
 
-</main>
 
+    <div class="button">
+        <input type="reset" value="Cancel">
+        <input type="submit" class="colored-btn">
+    </div>
+    </form>
 @endsection

@@ -16,11 +16,9 @@ Projects
 
         <tr class="pm-thead">
         <th scope="col">Project Name</th>
-      <th scope="col">Code</th>
-      <th scope="col">Initiated for</th>
-      <th scope="col">Description</th>
       <th scope="col">Duration</th>
       <th scope="col">Owner</th>
+      <th scope="col">Progress</th>
       <th scope="col">Attachment</th>
       <th scope="col">Actions</th>
         </tr>
@@ -28,11 +26,13 @@ Projects
         @forelse($projects as $project)
         <tr class="pm-tbody">
         <td>{{$project->name}}</td>
-      <td>{{$project->code}}</td>
-      <td>{{$project->initiated_for}}</td>
-      <td>{{$project->description}}</td>
       <td>{{$project->duration}}</td>
       <td>{{$project->project_owner}}</td>
+      <td>
+      <div class="progress">
+      <div class="progress-bar" role="progressbar"style="width: 25%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><div>
+      </div>
+      </td>
            
       <td>
      
@@ -64,7 +64,7 @@ Projects
       <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
 
-<!--         
+      <!--         
         <form action="{{ url('projects')}}/{{$project->id }}" method="POST">
             @csrf
 
@@ -79,6 +79,7 @@ Projects
             <input name="_method" type="hidden" value="DELETE">
             <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
         </form>
+        <a href="{{url('projects')}}/{{$project->id}}"><button type="button" class="btn btn-sm  btn-success"><i class="fa-solid fa-bars"></i></button></a>
 
 
       </div>

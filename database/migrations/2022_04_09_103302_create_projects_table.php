@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->String('name');
             $table->String('code');
-            $table->integer('initiated_for');
+            $table->string('initiated_for');
             $table->String('description');
             $table->date('start_date');
             $table->date('end_date');

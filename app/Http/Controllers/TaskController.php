@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class TaskController extends Controller
 {
@@ -21,9 +22,14 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view("tasks.create");
+
+
+
+        return view("tasks.create",[
+            "project_id" => $id,
+        ]);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\project;
 use App\Models\User;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Image;
 use File;
@@ -116,7 +117,10 @@ class ProjectController extends Controller
      */
     public function show(project $project)
     {
-        //
+        return view("projects.details",[
+            'project' =>$project,
+            'tasks' => Task::where('project_id',$project->id)->get(),
+        ]);
     }
 
     /**
@@ -158,9 +162,8 @@ class ProjectController extends Controller
 
 
         if($request->hasFile('attachment')){
-            $file = Project::find($project);
-            $path = public_path("uploads/projects/".$file[0]->attachment);
-            echo $path;
+           
+            $path = public_path("uploads/projects/".$project->attachment);
     
             if(File::exists($path)){
                 File::delete($path);
@@ -242,4 +245,5 @@ class ProjectController extends Controller
             "file" => $file,
         ]);
     }
+   
 }

@@ -29,26 +29,11 @@ Create a project
     </div>
     <div class="input-div">
         <label for="">Initiated for</label><br>
-
-
-
-        <select  name="initiated_for"  id="">
-            <option value="{{$project->initiated_for}}" selected>Select one</option>
-            @foreach($users as $user)
-            <option value="{{$user->id}}">{{$user->username}}</option>
-            @endforeach
-        </select> 
-
-        
-        <br>
-
-
-
+        <input type="text"  name="initiated_for" value="{{$project->initiated_for}}" ><br>
         @error('initiated_for')
                 <small class="text-danger">{{$message}}</small>
             @enderror
-        
-   </div>
+    </div>
     
 </div>
 <div class="role-form">
@@ -90,7 +75,7 @@ Create a project
 <div class="input-div">
         <label for="">Project owner</label><br>
         <select name="project_owner" id="">
-            <option value="" selected>Select one</option>
+            <option value="{{$project->project_owner}}" selected>Select one</option>
             @foreach($users as $user)
             <option value="{{$user->id}}">{{$user->username}}</option>
             @endforeach

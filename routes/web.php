@@ -40,8 +40,13 @@ Route::get('/auth/change/password',function (){
 Route::post('/auth/store',[AuthController::class, 'store']);
 Route::post('/auth/check',[AuthController::class, 'check']);
 
-Route::get('/tasks',[TaskController::class, 'index']);
-Route::get('/tasks/create',[TaskController::class, 'create']);
+Route::resource('/tasks',TaskController::class)->middleware(["auth","check"]);
+Route::get('tasks/create/{id}',[TaskController::class, 'create']);
+
+
+
+
+
 Route::get('/users',function(){
     return view('users.index');
 });

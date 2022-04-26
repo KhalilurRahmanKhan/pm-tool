@@ -124,9 +124,8 @@ body{
     width: 83%;
    margin-left: 90px;
 }
-form{
-    margin-left: 80px;
-}
+
+
 .input-div{
     width: 50%;
 }
@@ -150,9 +149,7 @@ form{
     border-bottom: 4px solid #16009E;
     border-radius: 5px;
 }
-.attachment{
-    display:;
-}
+
 .input-div-full {
     width: 95%;
     padding: 10px;
@@ -274,4 +271,14 @@ form{
     border: none;
     color: white;
     border-radius: 5px;
+}
+
+
+.pm-tbody:hover{
+    background-color: #e5e2f3;
+
+}
+.progress{
+    background-color: #c0bdd9!important;
+    height: 10px!important;
 }
