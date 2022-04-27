@@ -42,6 +42,9 @@ Route::post('/auth/check',[AuthController::class, 'check']);
 
 Route::resource('/tasks',TaskController::class)->middleware(["auth","check"]);
 Route::get('tasks/create/{id}',[TaskController::class, 'create']);
+Route::get('/tasks/attachment/view/{file}',[TaskController::class, 'view'])->middleware(["auth","check"]);
+Route::post('tasks/status/update/{id}',[TaskController::class,'statusUpdate']);
+
 
 
 
