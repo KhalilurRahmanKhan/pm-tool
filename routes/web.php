@@ -28,6 +28,7 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware("auth
 Route::resource('/projects',ProjectController::class)->middleware(["auth","check"]);
 Route::get('/projects/attachment/download/{file}',[ProjectController::class, 'download'])->middleware(["auth","check"]);
 Route::get('/projects/attachment/view/{file}',[ProjectController::class, 'view'])->middleware(["auth","check"]);
+Route::get('/projects/tasklist/{project}',[ProjectController::class, 'tasklist'])->middleware(["auth","check"]);
 
 Route::get('/auth/login',[AuthController::class, 'login']);
 Route::get('/auth/registration',[AuthController::class, 'registration']);
@@ -42,6 +43,9 @@ Route::post('/auth/check',[AuthController::class, 'check']);
 
 Route::resource('/tasks',TaskController::class)->middleware(["auth","check"]);
 Route::get('tasks/create/{id}',[TaskController::class, 'create']);
+Route::get('/tasks/attachment/view/{file}',[TaskController::class, 'view'])->middleware(["auth","check"]);
+Route::post('tasks/status/update/{id}',[TaskController::class,'statusUpdate']);
+
 
 
 

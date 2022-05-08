@@ -29,9 +29,31 @@ Projects
       <td>{{$project->duration}}</td>
       <td>{{$project->project_owner}}</td>
       <td>
+      @php
+      $progress = 0;
+      $tasks=App\Models\Task::where('project_id',$project->id)->get();
+      $count=App\Models\Task::where('project_id',$project->id)->count();
+    if($count != 0){
+      foreach($tasks as $task){
+       if($task->status == 1){
+        $progress+=50;
+       }
+       elseif($task->status == 2){
+        $progress+=100;
+       }
+     }
+    $progress/=$count;
+    }
+    
+      @endphp
+
+
+
       <div class="progress">
-      <div class="progress-bar" role="progressbar"style="width: 25%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><div>
+      <div class="progress-bar" role="progressbar"style="width: {{$progress}}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><div>
       </div>
+
+
       </td>
            
       <td>
@@ -51,7 +73,7 @@ Projects
           ?>
           
         ><i class="fa-solid fa-eye"></i></button></a>
-        <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}" <?php
+         <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}" <?php
         if($project->attachment == null)
        echo "style='pointer-events: none'";
           ?>><button   <?php

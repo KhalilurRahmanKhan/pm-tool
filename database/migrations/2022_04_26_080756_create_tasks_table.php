@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('details');
             $table->integer('project_id');
-            $table->integer('start_date');
-            $table->integer('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('user_id');
             $table->string('attachment');
             $table->integer('status');

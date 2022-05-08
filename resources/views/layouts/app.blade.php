@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b595dd4b2c.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
     
  
     
@@ -27,6 +29,11 @@
                 <a href="{{url('dashboard')}}" style="text-decoration:none; color:white;"><p style="text-decoration:none;">Machine Xtreme</p></a>
             </div>
            @if(auth()?->user()?->role_id == 1)
+            <div class="menu">
+                <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
+                <a  href="{{url('dashboard')}}"><p class="item"><i class="fa-solid fa-house"></i>Home</p></a>  
+                <!-- <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>   -->
+            </div>
             <div class="menu">
                 <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
                 <a  href="{{url('projects')}}"><p class="item"><i class="fa-solid fa-bars-progress"></i>Projects</p></a>  
@@ -59,7 +66,7 @@
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                     <div class="notification">
-                        <i class="fa-solid fa-bell"></i>
+                        <!-- <i class="fa-solid fa-bell"></i> -->
                     </div>
                     <div class="profile" id="profile">
                         <p>{{auth()?->user()?->username}}</p>

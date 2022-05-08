@@ -3,7 +3,7 @@
 Create a task
 @endsection
 @section("content")
-<form action="{{url('projects')}}" method="post" enctype="multipart/form-data">
+<form action="{{url('tasks')}}" method="post" enctype="multipart/form-data">
     @csrf
 <div class="role-form">
     <div class="" style="width:100%;">
@@ -19,15 +19,15 @@ Create a task
 <div class="role-form">
     <div class="input-div">
         <label for="">Start date</label><br>
-        <input type="date"  name="code" value="{{old('code')}}" ><br>
-        @error('code')
+        <input type="date"  name="start_date" value="{{old('start_date')}}" ><br>
+        @error('start_date')
                 <small class="text-danger">{{$message}}</small>
             @enderror
     </div>
     <div class="input-div">
         <label for="">End date</label><br>
-        <input type="date"  name="initiated_for" value="{{old('initiated_for')}}" ><br>
-        @error('initiated_for')
+        <input type="date"  name="end_date" value="{{old('end_date')}}" ><br>
+        @error('end_date')
                 <small class="text-danger">{{$message}}</small>
             @enderror
     </div>
@@ -36,8 +36,8 @@ Create a task
 <div class="role-form">
     <div class="" style="width:100%;">
         <label for="">Task details</label><br>
-        <textarea class="input-div-full"  name="description" value="{{old('description')}}"  id="" cols="30" rows="5"></textarea><br>
-        @error('description')
+        <textarea class="input-div-full"  name="details"   id="" cols="30" rows="5">{{old('details')}}</textarea><br>
+        @error('details')
                 <small class="text-danger">{{$message}}</small>
             @enderror
     </div>
@@ -48,9 +48,12 @@ Create a task
 <div class="role-form">
 <div class="input-div">
         <label for="">Project owner</label><br>
-        <select name="project_owner" id="">
-            <option value="" selected>Select one</option>
-          
+        <select name="user_id" id="">
+        <option value="" selected>Select one</option>
+            @foreach(App\Models\User::all() as $user)
+           
+            <option value="{{$user->id}}">{{$user->username}}</option>
+            @endforeach
            
         </select> <br>
         @error('project_owner')
@@ -59,13 +62,11 @@ Create a task
    </div>
     <div class="input-div">
         <label for="">Attachment</label><br>
-        <input type="file"  name="remarks" value="{{old('remarks')}}" ><br>
-        @error('remarks')
-                <small class="text-danger">{{$message}}</small>
-            @enderror
+        <input type="file"  name="attachment" ><br>
+     
     </div>  
 </div>
-<input type="hidden" value="{{$project_id}}">
+<input type="hidden" name="project_id" value="{{$project_id}}">
 
 
     <div class="button">

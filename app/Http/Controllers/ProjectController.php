@@ -10,6 +10,8 @@ use Image;
 use File;
 use Illuminate\Support\Facades\Storage;
 use Alert;
+use App\Charts\TaskChart;
+
 
 class ProjectController extends Controller
 {
@@ -117,7 +119,43 @@ class ProjectController extends Controller
      */
     public function show(project $project)
     {
+
+        $labels = [];
+        $status=[];
+
+        foreach(Task::where('project_id',$project->id)->get() as $task){
+            array_push($labels,$task->name);
+            if($task->status== 0){
+                array_push($status,0);
+            }
+            elseif($task->status== 1){
+                array_push($status,50);
+            }
+            elseif($task->status== 2){
+                array_push($status,100);
+            }
+            elseif($task->status== 3){
+                array_push($status,0);
+            }
+            elseif($task->status== 4){
+                array_push($status,0);
+            }
+        }
+
+        $chart = new TaskChart;
+        $chart->labels($labels);
+        $chart->dataset('Tasks', 'line',$status)->color('#16009E');
+        
         return view("projects.details",[
+            'chart' =>$chart,
+            'project' =>$project,
+            'tasks' => Task::where('project_id',$project->id)->get(),
+        ]);
+    }
+
+    public function tasklist(project $project)
+    {
+        return view("projects.tasklist",[
             'project' =>$project,
             'tasks' => Task::where('project_id',$project->id)->get(),
         ]);
@@ -245,5 +283,7 @@ class ProjectController extends Controller
             "file" => $file,
         ]);
     }
+
+
    
 }

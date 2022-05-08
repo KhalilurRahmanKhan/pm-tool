@@ -282,3 +282,20 @@ body{
     background-color: #c0bdd9!important;
     height: 10px!important;
 }
+
+
+.pin {
+    height: 130px;
+    background-color: #2e10f3;
+    margin: 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    flex-direction: column;
+}
+
+.chart{
+    background-color: #16009E;
+}
