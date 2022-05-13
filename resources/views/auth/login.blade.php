@@ -21,7 +21,7 @@
 <main class="form-signin">
   <form action="{{url('auth/check')}}" method="post">
     @csrf
-    <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
+    <img class="mb-4 mt-2" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="60">
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" autofocus placeholder="" name="username" autocomplete="off">
@@ -43,6 +43,10 @@
   </form>
   @if(session()->has("msg")) 
   <small class="text-danger"> {{session()->get("msg")}}</small>
+    @endif
+  @if(session()->has("loginmsg")) 
+  <small class="text-danger"> {{session()->get("loginmsg")}}</small><br>
+  <i>Continue with <a href="{{url('dashboard')}}">previous account</a> or <a href="{{url('newlogin')}}">new account</a></i>
     @endif
 
   <p class="mt-5 mb-3 text-muted">If you are not registered, <a href="{{url('auth/registration')}}">register here</a>.</p>

@@ -5,35 +5,21 @@ Details
 @section("content")
 <div class="row" style="margin-left:80px;">
 
-
-@if(auth()?->user()?->role_id == 1)
-    <div class="row mt-5 ">
-    <div class="col-md-9">
-    </div>
-    <div class="col-md-3">
-        <a href="{{url('tasks/create')}}/{{$project->id}}"><button type="button" class="blue-btn">Add new task</button></a>
-    </div>
-</div>
-@endif
-
     <div class="row">
         <div class="col-md-10 mx-auto">
         <table class="pm-table">
 
 <tr class="pm-thead">
-    <th>Name</th>
+    <th>Project</th>
+    <th>Task</th>
     <th>Details</th>
     <th>Duration</th>
-    <th>Assign to</th>
     <th>Attachment</th>
     <th>Status</th>
-    @if(auth()?->user()?->role_id == 1)
-    <th>Action</th>
-    @endif
 </tr>
 
 
-@foreach($tasks as $task)
+@foreach($mytasks as $task)
 
 @php
 $start_date = new DateTime($task->start_date);
@@ -41,12 +27,11 @@ $end_date = new DateTime($task->end_date);
 $interval = $start_date->diff($end_date);
 @endphp
 <tr class="pm-tbody">
+    <td>{{App\Models\Project::find($task->project_id)?->id}}</td>
     <td>{{$task->name}}</td>
     <td>{{$task->details}}</td>
     <td>{{$interval->days}} days</td>
-    <td>
-        {{App\Models\User::find($task->user_id)->username}}
-    </td>
+  
     <td>
     <a href="{{url('tasks/attachment/view')}}/{{$task->attachment}}" 
         <?php
@@ -63,7 +48,6 @@ $interval = $start_date->diff($end_date);
           
         ><i class="fa-solid fa-eye"></i></button></a>
     </td>
-
     <td>
     <form method="post" action="{{url('tasks/status/update')}}/{{$task->id}}">
         @csrf
@@ -112,28 +96,19 @@ $interval = $start_date->diff($end_date);
         </select>
     </form>
     </td>
-    @if(auth()?->user()?->role_id == 1)
-    <td>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{{url('tasks/edit')}}/{{$task->id}}"><button type="button" class="btn btn-sm  btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
-
-        <form method="POST" action="{{ url('tasks')}}/{{$task->id }}">
-            @csrf
-
-            <input name="_method" type="hidden" value="DELETE">
-            <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
-        </form>
-
-
-      </div>
-      </td>
-      @endif
+   
 </tr>
 @endforeach
 
 
 </table>
+<br>
+<div>
+
+    {{ $mytasks->links() }}
+</div>
         </div>
     </div>
 </div>
+
 @endsection

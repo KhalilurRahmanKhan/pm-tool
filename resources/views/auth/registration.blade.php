@@ -21,7 +21,7 @@
 <main class="form-signin">
   <form action="{{url('auth/store')}}" method="post">
     @csrf
-    <img class="mb-4" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="90">
+    <img class="mb-4 mt-2" src="{{asset('images/mx-logo.jpg')}}" alt="" width="200" height="60">
 
     <div class="form-floating">
       <input autofocus type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">

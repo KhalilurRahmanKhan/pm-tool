@@ -28,17 +28,32 @@
             <div class="brand-name">
                 <a href="{{url('dashboard')}}" style="text-decoration:none; color:white;"><p style="text-decoration:none;">Machine Xtreme</p></a>
             </div>
-           @if(auth()?->user()?->role_id == 1)
+
             <div class="menu">
                 <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
                 <a  href="{{url('dashboard')}}"><p class="item"><i class="fa-solid fa-house"></i>Home</p></a>  
                 <!-- <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>   -->
             </div>
+
+            @if(auth()?->user()?->role_id != 1)
+            <div class="menu">
+                <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
+                <a  href="{{url('mytask')}}"><p class="item"><i class="fa-solid fa-list-check"></i></i>My Tasks</p></a>  
+                <!-- <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>   -->
+            </div>
+            @endif
+
+            
             <div class="menu">
                 <!-- <a href="{{url('projects')}}"><p>Projects</p></a> -->
                 <a  href="{{url('projects')}}"><p class="item"><i class="fa-solid fa-bars-progress"></i>Projects</p></a>  
                 <!-- <a href="{{url('projects/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create project</p></a>   -->
             </div>
+
+           @if(auth()?->user()?->role_id == 1)
+           
+           
+          
          
             <div class="menu">
                 <!-- <a href="{{url('role')}}"><p>Roles</p></a> -->
@@ -55,10 +70,12 @@
                 <!-- <a href="{{url('role/create')}}"><p class="item"><i class="fa-solid fa-table-columns"></i>Create role</p></a>    -->
             </div>
             @endif
+         
           
         </div>
         <div class="right">
-            <div class="nav">
+           <div class="fixed">
+           <div class="nav">
                 <p> @yield("title")</p>
                 <div class="nav-items">
                     <div class="search">
@@ -69,10 +86,11 @@
                         <!-- <i class="fa-solid fa-bell"></i> -->
                     </div>
                     <div class="profile" id="profile">
-                        <p>{{auth()?->user()?->username}}</p>
+                        <p>{{auth()?->user()?->username}}</p><p> </p><i style="color:blue;" class="fa-solid fa-bars"></i></i>
                     </div>
                 </div>
             </div>
+           </div>
             <div id="profile-menu">
                <h4>{{auth()->user()?->username}}</h4>
                
@@ -82,7 +100,8 @@
                     @csrf
                 <button type="submit" class="btn btn-sm btn-primary" style="margin-top :15px;">Logout</button>
                 </form>
-            </div>
+            </div><br><br><br>
+            <div class="solid"></div>
 
 
             @yield("content")

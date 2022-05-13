@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use Alert;
+use Auth;
+use File;
 
 class TaskController extends Controller
 {
@@ -104,7 +107,10 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('tasks.edit',[
+            'task' => Task::find($id),
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -114,9 +120,56 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
-        //
+     
+        $this->validate($request,[
+            'name' => 'required',
+            'details' => 'required',
+            'project_id' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+
+        ]);
+
+
+
+        if($request->hasFile('attachment')){
+           
+            $path = public_path("uploads/tasks/".$task->attachment);
+    
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $project->delete();
+        }
+
+        $task->name = $request->name;
+        $task->details = $request->details;
+        $task->project_id = $request->project_id;
+        $task->start_date = $request->start_date;
+        $task->end_date = $request->end_date;
+        $task->user_id = $request->user_id;
+       
+   
+        $task->save();
+
+
+        if($request->hasFile('attachment')){
+           
+
+            $uploaded_file = $request->file("attachment");
+            $uploaded_file_new_name = $task->id.".".$uploaded_file->extension();
+            $request->file("attachment")->move('uploads/tasks',$uploaded_file_new_name);
+
+            $task->attachment = $uploaded_file_new_name;
+            $task->save();
+        }
+
+
+        Alert::success('Congrats', 'Data has been updated');
+
+        return redirect()->to('projects/tasklist/'.$request->project_id);
     }
 
     /**
@@ -125,9 +178,24 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Task $task)
     {
-        //
+        
+        $path = public_path("uploads/tasks/".$task->attachment);
+
+     
+ 
+
+        if(File::exists($path)){
+            File::delete($path);
+        }
+
+        $task->delete();
+
+        Alert::success('Congrats', 'Data has been deleted');
+
+
+        return back();
     }
 
 
@@ -146,5 +214,13 @@ class TaskController extends Controller
         $task->save();
 
         return back();
+    }
+
+
+    public function mytask(){
+
+        return view("tasks.mytask",[
+            'mytasks' => Task::where('user_id',Auth::id())->simplePaginate(6),
+        ]);
     }
 }

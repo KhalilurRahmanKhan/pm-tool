@@ -55,18 +55,41 @@ body{
 .right{
     width: calc(100vw - 200px);
     margin-left: 210px;
+  
 
 }
 .nav{
     height: 50px;
     margin: 10px;
-    margin-left: 80px;
     border-bottom: 3px solid #e7dbdb;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px!important;
+    margin-bottom: 100px!important;
     margin-top: 0px;
+  
+ 
+   
+}
+.solid{
+    width: calc(100vw - 270px);
+    height: 50px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #16009E;
+    z-index: 1;
+ 
+   
+}
+.fixed{
+    width: calc(100vw - 270px);
+position: fixed;
+top: 0;
+right: 0;
+z-index: 2;
+background-color: white;
+height: 50px;
 }
 
 .menu a{

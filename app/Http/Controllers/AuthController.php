@@ -15,6 +15,10 @@ class AuthController extends Controller
     function login(){
         return view("auth.login");
     }
+    function newlogin(){
+        auth()->logout();
+        return view("auth.login");
+    }
    
     function check(Request $request){
         $request->validate([
@@ -24,23 +28,37 @@ class AuthController extends Controller
     
         $credentials = $request->only('username', 'password');
 
-        
+        if(Auth::check()){
+            return back()->with('loginmsg',"One user is already logged in!");
+        }
+        else{
             if (Auth::attempt($credentials)) {
                 if(auth()->user()->role_id == ""){
+                    auth()->logout();
                     return back()->with('msg',"Please confirm your role first!");
                 }
+               
                 if(auth()->user()->block == 1){
+                    auth()->logout();
                     return back()->with('msg',"Your account has been blocked!");
                 }
+
                 else{
-                    auth()->attempt($request->only('username',"password"));
+                   
                     return redirect()->intended('dashboard');
                 } 
             } 
             else{
                 return back()->with('msg',"User credentials do not match!");
             }       
+    
+        }
+
+            
+    
+
         
+           
         
        
     }

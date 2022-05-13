@@ -33,7 +33,7 @@ Roles
         @foreach($role as $item)
         <tr class="pm-tbody">
             <td>{{$item->id}}</td>
-            <td>{{$item->role}}</td>
+            <td width="20%">{{$item->role}}</td>
             <td>{{$item->comments}}</td>
             <td>
             <div class="btn-group" role="group" aria-label="Basic example">
@@ -46,6 +46,8 @@ Roles
 
             <button type="submit" class="btn btn-sm btn-danger btn-block"><i class="fa-solid fa-trash-can"></i></button>
         </form> -->
+
+        @if($item->id != 1)
         
         <form method="POST" action="{{ url('role/delete')}}/{{$item->id }}">
             @csrf
@@ -53,6 +55,9 @@ Roles
             <input name="_method" type="hidden" value="DELETE">
             <button type="submit" class="btn btn-sm btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'><i class="fa-solid fa-trash-can"></i></button>
         </form>
+
+        @endif
+
 
       </div>
             </td>

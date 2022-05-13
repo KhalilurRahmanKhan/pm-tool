@@ -4,6 +4,7 @@ Projects
 @endsection
 @section("content")
 <main class="col-md-8 ms-sm-auto col-lg-10 m-auto">
+@if(auth()?->user()?->role_id == 1)
    
 <div class="row ">
     <div class="col-md-10">
@@ -22,7 +23,6 @@ Projects
       <th scope="col">Attachment</th>
       <th scope="col">Actions</th>
         </tr>
- 
         @forelse($projects as $project)
         <tr class="pm-tbody">
         <td>{{$project->name}}</td>
@@ -82,6 +82,8 @@ Projects
             ?> type="button" class="btn btn-sm btn-info"><i class="fa-solid fa-download"></i></button></a>
       </div>
       </td>
+
+
       <td>
       <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{{url('projects')}}/{{$project->id}}/edit"><button type="button" class="btn btn-sm  btn-secondary"><i class="fa-solid fa-eraser"></i></button></a>
@@ -106,11 +108,110 @@ Projects
 
       </div>
       </td>
+  
 
       @empty
       <td colspan="20" class="text-center text-danger"> No data found</td>
     
     </tr>
+
+    @endif
+  @endforelse
+        
+
+</table>
+
+
+
+
+@if(auth()?->user()?->role_id != 1)
+   
+<table class="pm-table">
+
+        <tr class="pm-thead">
+        <th scope="col">Project Name</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Progress</th>
+      <th scope="col">Attachment</th>
+      <th>Action</th>
+        </tr>
+        @forelse($user_projects as $project)
+        <tr class="pm-tbody">
+        <td>{{$project->name}}</td>
+      <td>{{$project->duration}}</td>
+      <td>{{$project->project_owner}}</td>
+     
+      <td>
+      @php
+      $progress = 0;
+      $tasks=App\Models\Task::where('project_id',$project->id)->get();
+      $count=App\Models\Task::where('project_id',$project->id)->count();
+    if($count != 0){
+      foreach($tasks as $task){
+       if($task->status == 1){
+        $progress+=50;
+       }
+       elseif($task->status == 2){
+        $progress+=100;
+       }
+     }
+    $progress/=$count;
+    }
+    
+      @endphp
+
+
+
+      <div class="progress">
+      <div class="progress-bar" role="progressbar"style="width: {{$progress}}%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><div>
+      </div>
+
+
+      </td>
+           
+      <td>
+     
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{{url('projects/attachment/view')}}/{{$project->attachment}}" 
+        <?php
+        if($project->attachment == null)
+       echo "style='pointer-events: none'";
+          ?>
+        >
+          <button
+        type="button" class="btn btn-sm btn-primary" 
+        <?php
+        if($project->attachment == null)
+          echo "disabled "; echo "style='pointer-events: none'";
+          ?>
+          
+        ><i class="fa-solid fa-eye"></i></button></a>
+         <a href="{{url('projects/attachment/download')}}/{{$project->attachment}}" <?php
+        if($project->attachment == null)
+       echo "style='pointer-events: none'";
+          ?>><button   <?php
+          if($project->attachment == null)
+            echo "disabled "; echo "style='pointer-events: none'";
+            ?> type="button" class="btn btn-sm btn-info"><i class="fa-solid fa-download"></i></button></a>
+      </div>
+      </td>
+      
+      <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+    
+        <a href="{{url('projects')}}/{{$project->id}}"><button type="button" class="btn btn-sm  btn-success"><i class="fa-solid fa-bars"></i></button></a>
+
+
+      </div>
+      </td>
+
+      @empty
+      <td colspan="20" class="text-center text-danger"> No data found</td>
+    
+    </tr>
+
+    @endif
   @endforelse
         
 

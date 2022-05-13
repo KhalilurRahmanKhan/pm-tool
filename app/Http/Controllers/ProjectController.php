@@ -23,8 +23,17 @@ class ProjectController extends Controller
     public function index()
     {
 
+        $project_id = [];
+        foreach(Task::where('user_id',auth()->user()->role_id)->distinct('project_id')->get() as $project){
+            array_push($project_id,$project->project_id);
+          
+        }
+
+        $user_projects =  project::whereIn('id',$project_id)->get();
+
         return view('projects.index',[
             "projects" => project::all(),
+            "user_projects" => $user_projects,
         ]);
     }
 
@@ -123,7 +132,7 @@ class ProjectController extends Controller
         $labels = [];
         $status=[];
 
-        foreach(Task::where('project_id',$project->id)->get() as $task){
+        foreach(Task::where('project_id',$project->id)->where('user_id',auth()->user()->id)->get() as $task){
             array_push($labels,$task->name);
             if($task->status== 0){
                 array_push($status,0);
@@ -155,6 +164,20 @@ class ProjectController extends Controller
 
     public function tasklist(project $project)
     {
+
+        if(auth()?->user()?->role_id == 1){
+            return view("projects.tasklist",[
+                'project' =>$project,
+                'tasks' => Task::where('project_id',$project->id)->get(),
+            ]);
+        }
+        else{
+            return view("projects.tasklist",[
+                'project' =>$project,
+                'tasks' => Task::where('project_id',$project->id)->where('user_id',auth()?->user()?->id)->get(),
+            ]);
+        }
+
         return view("projects.tasklist",[
             'project' =>$project,
             'tasks' => Task::where('project_id',$project->id)->get(),
