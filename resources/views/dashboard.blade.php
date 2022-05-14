@@ -25,13 +25,13 @@
     <div class="col-md-3 pin">
     <i class="fa-solid fa-briefcase"></i>
         <h4>Projects</h4>
-        <h1>{{App\Models\Task::where('user_id',auth()->user()->role_id)->distinct('project_id')->count()}}</h1>
+        <h1>{{App\Models\Task::where('user_id',auth()->user()->id)->distinct('project_id')->count()}}</h1>
 
     </div>
     <div class="col-md-3 pin">
     <i class="fa-solid fa-list-check"></i>
         <h4>Tasks</h4>
-        <h1>{{App\Models\Task::where('user_id',auth()->user()->role_id)->count()}}</h1>
+        <h1>{{App\Models\Task::where('user_id',auth()->user()->id)->count()}}</h1>
     </div>
     @endif
    

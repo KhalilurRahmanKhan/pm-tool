@@ -24,7 +24,7 @@ class ProjectController extends Controller
     {
 
         $project_id = [];
-        foreach(Task::where('user_id',auth()->user()->role_id)->distinct('project_id')->get() as $project){
+        foreach(Task::where('user_id',auth()->user()->id)->distinct('project_id')->get() as $project){
             array_push($project_id,$project->project_id);
           
         }
