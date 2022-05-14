@@ -27,7 +27,7 @@ $end_date = new DateTime($task->end_date);
 $interval = $start_date->diff($end_date);
 @endphp
 <tr class="pm-tbody">
-    <td>{{App\Models\Project::find($task->project_id)?->id}}</td>
+    <td>{{App\Models\project::find($task->project_id)?->id}}</td>
     <td>{{$task->name}}</td>
     <td>{{$task->details}}</td>
     <td>{{$interval->days}} days</td>
