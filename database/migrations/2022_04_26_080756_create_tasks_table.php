@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('details');
-            $table->integer('project_id');
+            $table->foreignId('project_id')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('user_id');

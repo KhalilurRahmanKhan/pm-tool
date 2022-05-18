@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('password');
-            $table->integer('role_id')->nullable();
+            $table->foreignId('role_id')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade')->nullable();
             $table->boolean('block')->default(false);
             $table->timestamps();
         });
